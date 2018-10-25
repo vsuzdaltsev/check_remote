@@ -4,7 +4,7 @@ cd check_remote
 gem install bundler   
 bundle install   
 irb   
->>irb(main):001:0> load 'lib/check_remote.rb'   
+>irb(main):001:0> load 'lib/check_remote.rb'   
 [2018-10-25T16:42:06+03:00] WARN: Please install an English UTF-8 locale for Chef to use, falling back to C locale and disabling UTF-8 support.   
 => true   
 irb(main):002:0> check = CheckRemote.new   
