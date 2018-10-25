@@ -1,4 +1,4 @@
-require_relative File.expand_path('lib/service', __dir__)
+require_relative File.expand_path('service', __dir__)
 
 # Check if service available
 class ServiceManager
