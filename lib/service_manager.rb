@@ -1,4 +1,4 @@
-require_relative 'service'
+require_relative File.expand_path('lib/service', __dir__)
 
 # Check if service available
 class ServiceManager
@@ -34,7 +34,6 @@ class TCPServiceManager < ServiceManager
       wait_connection
     end
     connection_failed
-    false
   end
 
   def reachable
