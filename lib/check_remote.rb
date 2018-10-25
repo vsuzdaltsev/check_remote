@@ -1,4 +1,4 @@
-require_relative 'service_manager'
+require_relative File.expand_path('service_manager.rb', __dir__)
 require 'chef/application'
 
 # Create check object
