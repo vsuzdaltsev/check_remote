@@ -15,8 +15,8 @@ irb(main):003:0> check.wait_until_up
 [2018-10-25T16:42:20+03:00] WARN: * Waiting for connection to 127.0.0.1:22/tcp..   
 [2018-10-25T16:42:21+03:00] ERROR: * Failed to connect! 127.0.0.1:22/tcp is unreachable after 3 tries.   
 => false   
-sudo systemctl start sshd
-irb
+sudo systemctl start sshd   
+irb   
 >irb(main):001:0> load 'lib/check_remote.rb'
 => true
 irb(main):002:0> check = CheckRemote.new
