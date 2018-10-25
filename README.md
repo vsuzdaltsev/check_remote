@@ -25,6 +25,6 @@ irb(main):002:0> check = CheckRemote.new
 => #<CheckRemote:0x00000001f15198 @opts={:host=>"127.0.0.1", :check_type=>"ssh", :timeout=>1, :sleep=>1, :tries=>3}, @check=#<SshServiceManager:0x00000001f0e6e0 @service=#<Service:0x00000001f14478 @host="127.0.0.1", @check_type="ssh", @timeout=1, @sleep=1, @tries=3, @port=22>, @remote="127.0.0.1:22/tcp">>
 irb(main):003:0> check.wait_until_up   
 [2018-10-26T01:09:52+03:00] WARN: Trying to check if ssh service up
-[2018-10-26T01:09:52+03:00] WARN: * Successfully connected! 127.0.0.1:22/tcp is reachable
+[2018-10-26T01:09:52+03:00] WARN: * Successfully connected! 127.0.0.1:22/tcp is reachable   
 => true   
 
