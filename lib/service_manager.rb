@@ -5,7 +5,7 @@ class ServiceManager
   require 'socket'
   require 'timeout'
 
-  # @param service [ServiceManager] - ServiceManager instance
+  # @param service [Service] - Service instance
   # @return  - ServiceManager instance
   def initialize(service)
     @service = service
