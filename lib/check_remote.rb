@@ -14,21 +14,32 @@ class CheckRemote
     }
     @opts = default_opts.merge(opts)
 
-    service = ServiceBuilder.build do |builder|
-      @opts.each_key do |param|
-        builder.public_send("#{param}=", @opts[param])
-      end
-    end
-
-    check_type = @opts[:check_type].capitalize
     @check = Class.const_get(check_type + 'ServiceManager').new(service).freeze
-  rescue StandardError => e
-    Chef::Application.fatal!("Wrong options: #{e}", 1)
+  rescue StandardError => err
+    fatal(err)
   end
 
   # Run service check with generated ServiceManager instance
   # @return [Boolean] - the result of service check
   def wait_until_up
     @check.wait_until_up
+  end
+
+  private
+
+  def service
+    ServiceBuilder.build do |builder|
+      @opts.each_key do |param|
+        builder.public_send("#{param}=", @opts[param])
+      end
+    end
+  end
+
+  def fatal(err)
+    Chef::Application.fatal!("Wrong options: #{err}", 1)
+  end
+
+  def check_type
+    @opts[:check_type].capitalize
   end
 end
