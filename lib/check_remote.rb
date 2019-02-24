@@ -5,9 +5,8 @@ require          'chef/application'
 # Create check object
 # @param [opts] [Hash] - options to pass to Service class instance
 class CheckRemote
-  def initialize(opts = {})
-    @opts = Checks::Constants::DEFAULT_OPTS.merge(opts)
-
+  def initialize(opts = {}, defaults: true)
+    @opts  = load_defaults(opts, defaults)
     @check = Class.const_get(check_type + 'ServiceManager').new(service).freeze
   rescue StandardError => err
     fatal(err)
@@ -20,6 +19,12 @@ class CheckRemote
   end
 
   private
+
+  def load_defaults(opts, defaults)
+    return Checks::Constants::DEFAULT_OPTS.merge(opts) if defaults
+
+    opts
+  end
 
   def service
     ServiceBuilder.build do |builder|
