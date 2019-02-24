@@ -1,18 +1,12 @@
-require_relative File.expand_path('service_manager.rb', __dir__)
-require 'chef/application'
+require_relative File.expand_path('constants', __dir__)
+require_relative File.expand_path('service_manager', __dir__)
+require          'chef/application'
 
 # Create check object
 # @param [opts] [Hash] - options to pass to Service class instance
 class CheckRemote
   def initialize(opts = {})
-    default_opts = {
-      host:       '127.0.0.1',
-      check_type: 'ssh',
-      timeout:    1,
-      sleep:      1,
-      tries:      3
-    }
-    @opts = default_opts.merge(opts)
+    @opts = Checks::Constants::DEFAULT_OPTS.merge(opts)
 
     @check = Class.const_get(check_type + 'ServiceManager').new(service).freeze
   rescue StandardError => err

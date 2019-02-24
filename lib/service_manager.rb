@@ -1,9 +1,9 @@
 require_relative File.expand_path('service', __dir__)
+require          'socket'
+require          'timeout'
 
 # Check if service available
 class ServiceManager
-  require 'socket'
-  require 'timeout'
 
   # @param service [Service] - Service instance
   # @return  - ServiceManager instance
@@ -71,7 +71,7 @@ class SshServiceManager < TCPServiceManager
   def initialize(service)
     super
     @service.port = 22
-    @remote = "#{@service.host}:#{@service.port}/tcp"
+    @remote       = "#{@service.host}:#{@service.port}/tcp"
   end
 end
 
@@ -80,7 +80,7 @@ class MysqlServiceManager < TCPServiceManager
   def initialize(service)
     super
     @service.port = 3306
-    @remote = "#{@service.host}:#{@service.port}/tcp"
+    @remote       = "#{@service.host}:#{@service.port}/tcp"
   end
 
   def wait_until_up
