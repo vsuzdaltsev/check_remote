@@ -4,7 +4,6 @@ require          'timeout'
 
 # Check if service available
 class ServiceManager
-
   # @param service [Service] - Service instance
   # @return  - ServiceManager instance
   def initialize(service)
